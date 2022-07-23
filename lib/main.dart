@@ -1,6 +1,5 @@
-import 'package:chat_application_with_backend_practice1/Pages/home_page.dart';
 import 'package:chat_application_with_backend_practice1/Pages/pages.dart';
-import 'package:chat_application_with_backend_practice1/theme.dart';
+// import 'package:chat_application_with_backend_practice1/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,10 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       // theme: AppTheme.light(),
       // darkTheme: AppTheme.dark(),
-      themeMode: ThemeMode.dark,
+      // themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       title: 'Chat Application Practice',      
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

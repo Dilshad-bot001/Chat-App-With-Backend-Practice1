@@ -10,7 +10,7 @@ class CallsPage extends StatefulWidget {
 class _CallsPageState extends State<CallsPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Calls Page'),
     );
   }
