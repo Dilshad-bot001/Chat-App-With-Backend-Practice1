@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
 
+
+  //here we are getting messageData from the messagepage section for showing same name
   static Route route(MessageData data) => MaterialPageRoute(
     builder: (context) => ChatScreen(
       messageData: data,
@@ -20,19 +22,31 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+
+        //appbar designing section
         iconTheme: Theme.of(context).iconTheme,
         centerTitle: false,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         leadingWidth: 54.0,
+
+
+        //back icon section
         leading: Align(
           alignment: Alignment.centerRight,
           child: IconBackground(icon: CupertinoIcons.back, onTap: (){Navigator.of(context).pop();}),
         ),
+
+
+        //here we are using messagedata which we get from the messagePage for showing same name and calling the appBarTitle where there is two thing senders avatar and name
         title: _AppBarTitle(
           messageData: messageData,
         ),
         actions: [
+
+
+          //camera section on appbar
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Center(
@@ -42,6 +56,9 @@ class ChatScreen extends StatelessWidget {
               ),
             ),
           ),
+
+
+          //phone section on appbar
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: Center(
@@ -55,9 +72,14 @@ class ChatScreen extends StatelessWidget {
       ),
       body: Column(
         children: const [
+
+
+          //demomessagelist calling section/ in this section we will show the chats
           Expanded(
             child: _DemoMessageList(),
           ),
+
+          //and this is bottom bar section
           _ActionBar(),
         ],
       ),
@@ -72,9 +94,15 @@ class _DemoMessageList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
+
+
+      //list view of chat section
       child: ListView(
+
+
+        //list of hard coded chats
         children: const [
-          const _DateLable(label: 'Yesterday'),
+          _DateLable(label: 'Yesterday'),
           _MessageTile(
             message: 'Hi, Lucy! How\'s your day going?',
             messageDate: '12:01 PM'
@@ -105,6 +133,9 @@ class _DemoMessageList extends StatelessWidget {
   }
 }
 
+
+
+//sender message chat section
 class _MessageTile extends StatelessWidget {
 
   final String message;
@@ -116,6 +147,9 @@ class _MessageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    //sender message designing section
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Align(
@@ -133,11 +167,17 @@ class _MessageTile extends StatelessWidget {
                   bottomRight: Radius.circular(_borderRadius),
                 )
               ),
+
+
+              //sender's chat section
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
                 child: Text(message),
               ),
             ),
+
+
+            //time of sender's message
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
@@ -156,6 +196,8 @@ class _MessageTile extends StatelessWidget {
   }
 }
 
+
+//message section of mobile user/mine
 class _MessageOwnTile extends StatelessWidget {
 
   final String message;
@@ -167,6 +209,9 @@ class _MessageOwnTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    //message designing section
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Align(
@@ -184,6 +229,9 @@ class _MessageOwnTile extends StatelessWidget {
                   bottomRight: Radius.circular(_borderRadius),
                 )
               ),
+
+
+              //mobile user's chat section
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
                 child: Text(
@@ -194,6 +242,9 @@ class _MessageOwnTile extends StatelessWidget {
                 ),
               )
             ),
+
+
+            //time of mobile user's/mine sending the message
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
@@ -212,6 +263,9 @@ class _MessageOwnTile extends StatelessWidget {
   }
 }
 
+
+
+//the day at which the chat happened
 class _DateLable extends StatelessWidget {
   
   final String label;
@@ -244,6 +298,9 @@ class _DateLable extends StatelessWidget {
   }
 }
 
+
+
+//top bar sender name's and avatar section
 class _AppBarTitle extends StatelessWidget {
 
   final MessageData messageData;
@@ -253,6 +310,9 @@ class _AppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+
+
+        //senders avatar section on top bar
         Avatar.small(url: messageData.profilePicture),
         const SizedBox(width: 16.0,),
         Expanded(
@@ -260,12 +320,17 @@ class _AppBarTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
+              //senders name section on top bar
               Text(
                 messageData.senderName,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontSize: 14.0),
               ),
               const SizedBox(height: 2.0,),
+
+
+              //status of sender
               const Text(
                 'Online Now',
                 style: TextStyle(
@@ -282,6 +347,8 @@ class _AppBarTitle extends StatelessWidget {
   }
 }
 
+
+//bottom bar designing section
 class _ActionBar extends StatelessWidget {
   const _ActionBar({ Key? key }) : super(key: key);
 
@@ -301,12 +368,18 @@ class _ActionBar extends StatelessWidget {
                 )
               )
             ),
+
+
+            //camera icon section
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Icon(
                 CupertinoIcons.camera_fill,
               )),
             ),
+
+
+            //text field section / type something section
             const Expanded(
               child: Padding(
                 padding: EdgeInsets.only(left: 16.0),
@@ -319,6 +392,9 @@ class _ActionBar extends StatelessWidget {
                 ),
               )
             ),
+
+
+            //send message button section
             Padding(
               padding: const EdgeInsets.only(left: 12.0, right: 24.0),
               child: GlowingActionButton(
