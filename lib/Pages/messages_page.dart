@@ -1,6 +1,7 @@
 import 'dart:js';
 
 import 'package:chat_application_with_backend_practice1/Models/models.dart';
+import 'package:chat_application_with_backend_practice1/Screens/screens.dart';
 import 'package:chat_application_with_backend_practice1/Widgets/widget.dart';
 import 'package:chat_application_with_backend_practice1/app.dart';
 import 'package:chat_application_with_backend_practice1/helpers.dart';
@@ -123,7 +124,7 @@ class _MessageTile extends StatelessWidget {
 
       //in this section on tapping the messagetile navigator will push us to the chatscreen
       onTap: (){
-        // Navigator.of(context).push(ChatScreen.route(messageData));
+        Navigator.of(context).push(ChatScreen.routeWithChannel(channel));
       },
 
 
